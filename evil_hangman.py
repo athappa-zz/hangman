@@ -15,8 +15,9 @@ value_error_msg = 'Please pick a number.'
 
 #Take .txt and add all the words from it into a list
 with open('dictionary.txt', 'r') as f:
-	dictionary = [line.strip() for line in f]
+	raw_dictionary = [line.strip() for line in f]
 
+print raw_dictionary
 
 
 
@@ -67,8 +68,9 @@ while True:
 		print("How many chances do you want?")
 		num_guesses = int(raw_input(prompt))
 
-		if num_guesses < 0:
+		if num_guesses > 0:
 			print ("You have %s chances.") % (num_guesses)
+			break
 		elif num_guesses < 0:
 			print ("Pick a positive number")
 		elif num_guesses == 0:
@@ -94,19 +96,20 @@ while True:
 #Issue to solve: It double counts letters that appear more than once
 
 dictionary = {}
+
+
+
 def add_to_dictionary(list_of_words):
 
 
 	for word in list_of_words:
-		if word not in dictionary:
+		if word not in dictionary and len(word) == word_length: #Error here
 			dictionary[word] = {}
 			dictionary[word] = [('length',len(word))]
 
 		for letter in word:
-
-			dictionary[word].append((letter, word.count(letter)))
-
-
+			print letter
+			#dictionary[word].append((letter, word.count(letter)))
 
 			#letter_count = Counter()
 
@@ -115,15 +118,13 @@ def add_to_dictionary(list_of_words):
 		#x, list_of_words.count(x)
 	return dictionary
 
-add_to_dictionary(dictionary)
-
-
-dictionary_subset = {k, dictionary[k]) if k[0][1] == word_length)
+print add_to_dictionary(raw_dictionary)
 
 
 
-subset = {key:value for key, value in dict.items() if dict[key][0][1] == word_length}
 
+#dictionary_subset = {key:value for key, value in dictionary.items() if dictionary[key][0][1] == word_length}
+#print dictionary_subset
 #subset = {key:value for key, value in dict.items if value[0][1] == 7}
 
 
